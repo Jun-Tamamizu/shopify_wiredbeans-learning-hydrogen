@@ -2,7 +2,7 @@ FROM node:18 AS build-env
 ADD . /app
 
 WORKDIR /app
-RUN yarn
+RUN yarn --verbose
 # RUN yarn build --target node
 
 # FROM gcr.io/distroless/nodejs:16 AS run-env
