@@ -1,9 +1,9 @@
-FROM node:18 AS build-env
+FROM node:16 AS build-env
 ADD . /app
 
 WORKDIR /app
-RUN yarn --verbose --prod
-RUN yarn build
+RUN yarn
+RUN yarn build --target node
 # RUN yarn build --target node
 
 FROM gcr.io/distroless/nodejs:16 AS run-env
