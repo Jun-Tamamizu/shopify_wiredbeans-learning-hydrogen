@@ -3,7 +3,8 @@ ADD . /app
 
 WORKDIR /app
 RUN yarn --verbose --prod
-RUN yarn build --target node
+RUN yarn build
+# RUN yarn build --target node
 
 FROM gcr.io/distroless/nodejs:16 AS run-env
 ENV NODE_ENV production
