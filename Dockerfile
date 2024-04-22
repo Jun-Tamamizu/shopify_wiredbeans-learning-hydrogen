@@ -3,13 +3,13 @@ ADD . /app
 
 WORKDIR /app
 RUN yarn --verbose --prod
-# RUN yarn build --target node
+RUN yarn build --target node
 
-# FROM gcr.io/distroless/nodejs:16 AS run-env
-# ENV NODE_ENV production
-# COPY --from=build-env /app /app
+FROM gcr.io/distroless/nodejs:16 AS run-env
+ENV NODE_ENV production
+COPY --from=build-env /app /app
 
-# EXPOSE ${PORT:-10000}
+EXPOSE ${PORT:-10000}
 
-# WORKDIR /app
-# CMD ["dist/node/index.js"]
+WORKDIR /app
+CMD ["dist/node/index.js"]
